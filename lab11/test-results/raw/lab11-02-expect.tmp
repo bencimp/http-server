@@ -1,0 +1,4 @@
+>> ./simple_http_client
+>> diff -q index.html reference_files/index.html
+>> diff -q gatsby.txt reference_files/gatsby.txt
+>> diff -q ocelot.jpg reference_files/ocelot.jpg

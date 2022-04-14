@@ -1,0 +1,33 @@
+* (TEST 2) CODE simple_http_client
+COMMENTS:
+Tests the HTTP client program by retrieving three files from an HTTP server.
+Checks that the downloaded files match the provided reference copies.
+
+** program: bash -v
+
+** --- Failure messages --- 
+- FAILURE(137) due to TIMEOUT: Runtime exceeded maximum of '10s'
+- FAILURE: Output Mismatch at lines marked
+
+** --- Side by Side Differences ---
+- Expect output in: test-results/raw/lab11-02-expect.tmp
+- Actual output in: test-results/raw/lab11-02-actual.tmp
+- Differing lines have a character like '|' '>' or '<' in the middle
+#+BEGIN_SRC sbs-diff
+==== EXPECT ====                                   ==== ACTUAL ====                                
+>> ./simple_http_client                            >> ./simple_http_client
+>> diff -q index.html reference_files/index.html | GET /index.html HTTP/1.1                                                   
+>> diff -q gatsby.txt reference_files/gatsby.txt | Host: 44.199.183.158                                                   
+>> diff -q ocelot.jpg reference_files/ocelot.jpg |                                                    
+                                                 >
+#+END_SRC
+
+** --- Line Differences ---
+EXPECT:   2) >> diff -q index.html reference_files/index.html
+EXPECT:   3) >> diff -q gatsby.txt reference_files/gatsby.txt
+EXPECT:   4) >> diff -q ocelot.jpg reference_files/ocelot.jpg
+ACTUAL:   2) GET /index.html HTTP/1.1
+ACTUAL:   3) Host: 44.199.183.158
+ACTUAL:   4) 
+ACTUAL:   5) 
+
