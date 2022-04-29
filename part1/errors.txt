@@ -1,0 +1,37 @@
+gcc -Wall -Werror -g -o http_server http_server.c http.o
+http_server.c: In function ‘main’:
+http_server.c:81:25: error: initialization of ‘char’ from ‘void *’ makes integer from pointer without a cast [-Werror=int-conversion]
+   81 |         char mybuffer = malloc(BUFSIZE);
+      |                         ^~~~~~
+http_server.c:82:25: error: initialization of ‘char’ from ‘void *’ makes integer from pointer without a cast [-Werror=int-conversion]
+   82 |         char fullpath = malloc(BUFSIZE);
+      |                         ^~~~~~
+http_server.c:84:16: error: passing argument 1 of ‘strcpy’ makes pointer from integer without a cast [-Werror=int-conversion]
+   84 |         strcpy(fullpath, serve_dir);
+      |                ^~~~~~~~
+      |                |
+      |                char
+In file included from http_server.c:5:
+/usr/include/string.h:122:14: note: expected ‘char * restrict’ but argument is of type ‘char’
+  122 | extern char *strcpy (char *__restrict __dest, const char *__restrict __src)
+      |              ^~~~~~
+http_server.c:85:16: error: passing argument 1 of ‘strcat’ makes pointer from integer without a cast [-Werror=int-conversion]
+   85 |         strcat(fullpath, mybuffer);
+      |                ^~~~~~~~
+      |                |
+      |                char
+In file included from http_server.c:5:
+/usr/include/string.h:130:14: note: expected ‘char * restrict’ but argument is of type ‘char’
+  130 | extern char *strcat (char *__restrict __dest, const char *__restrict __src)
+      |              ^~~~~~
+http_server.c:85:26: error: passing argument 2 of ‘strcat’ makes pointer from integer without a cast [-Werror=int-conversion]
+   85 |         strcat(fullpath, mybuffer);
+      |                          ^~~~~~~~
+      |                          |
+      |                          char
+In file included from http_server.c:5:
+/usr/include/string.h:130:14: note: expected ‘const char * restrict’ but argument is of type ‘char’
+  130 | extern char *strcat (char *__restrict __dest, const char *__restrict __src)
+      |              ^~~~~~
+cc1: all warnings being treated as errors
+make: *** [Makefile:5: http_server] Error 1
