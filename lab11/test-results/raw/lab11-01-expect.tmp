@@ -1,2 +1,0 @@
->> ./test_quiz_filter QUESTIONS.txt | sha256sum -c QUESTIONS.sha256
--: OK

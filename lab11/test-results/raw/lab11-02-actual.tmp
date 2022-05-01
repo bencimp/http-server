@@ -1,5 +1,0 @@
->> ./simple_http_client
-GET /index.html HTTP/1.1
-Host: 44.199.183.158
-
-
